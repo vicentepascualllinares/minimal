@@ -11,6 +11,13 @@
   const ICON_PLAY = '<svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path d="M5.5 3.2 17 10 5.5 16.8Z" fill="currentColor"/></svg>';
   const ICON_STOP = '<svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><rect x="4.5" y="4.5" width="11" height="11" fill="currentColor"/></svg>';
 
+  /* Muchos portátiles traen un software de audio (Acer Purified Voice sobre Realtek, Dell/Waves, Dolby…)
+     con una lista fija de "apps de llamadas" (chrome.exe, msedge.exe, firefox.exe, opera.exe, Teams, Zoom…).
+     Si una de ellas reproduce sonido con el micro abierto, activa una reducción de ruido en la SALIDA
+     que deja la música apagada y "cancelada" en todo el equipo. La página no puede evitarlo: se apaga allí. */
+  const CALL_NR_NOTE = '<b>¿Suena apagado al grabar?</b> No es la app: el software de audio del portátil cree que estás en una llamada (Chrome, Edge, Firefox u Opera sonando con el micro abierto) y filtra la salida. En Acer: <b>Acer Purified Voice Console</b> → apaga <b>Speaker AI noise reduction (Voice Call)</b>. Más en la guía <b>?</b>';
+  const CALL_TIP_KEY = 'nrb.tip.call-nr';
+
   class App {
     constructor(engine, transport, looper) {
       this.engine = engine;
@@ -99,7 +106,8 @@
         NRB.store.touch();
         if (this.engine.mic.ok && !this.looper.micBusy()) await this.engine.initMic(s.micId);
       });
-      // El micrófono se abre solo al grabar (abrirlo puede hacer que Windows degrade el sonido de todo el equipo).
+      // El micrófono se abre solo al grabar: en muchos portátiles, sonido + micro abierto en el navegador
+      // activa la reducción de ruido "de llamadas" del fabricante, que apaga la salida de todo el equipo.
       this.micBtn = el('button', { class: 'pill pill--mic', type: 'button', text: 'MIC OFF', onclick: () => this.toggleMic() });
       this.micI = el('i');
       this.micMeter = el('div', { class: 'micmeter', title: 'Nivel de entrada (solo medidor)' }, this.micI);
@@ -151,6 +159,7 @@
       const box = el('div', { class: 'pop__body' }, [
         row('SALIDA', info, true), row('MIC', micInfo, true), row('BUFFER', prof.el, true), row('ECO MIC', aec.el, true),
         el('p', { class: 'pop__note', text: 'Si con altavoces o auriculares de cable oyes chasquidos o cortes, sube el BUFFER (MÁX). Con altavoces, ECO MIC quita del micro el ritmo que suena; con auriculares no hace falta.' }),
+        el('p', { class: 'pop__note pop__note--warn', html: CALL_NR_NOTE }),
       ]);
       NRB.popover.open(anchor, box, 'AUDIO');
     }
@@ -212,6 +221,19 @@
         : 'El micrófono está cerrado: se abre solo al pulsar REC y se cierra al terminar. Pulsa para abrirlo y mantenerlo abierto';
       document.body.classList.toggle('mic-live', m.ok);
       NRB.REC_IDS.forEach((id) => this.recLanes[id] && this.recLanes[id].refresh());
+      if (m.ok) this.maybeCallTip();
+    }
+
+    /* aviso una sola vez por equipo, la primera vez que se abre el micro en Windows */
+    maybeCallTip() {
+      if (this.callTipDone || this.engine.mic.synthetic) return;
+      this.callTipDone = true;
+      if (!/Windows/i.test(navigator.userAgent)) return;
+      try {
+        if (localStorage.getItem(CALL_TIP_KEY)) return;
+        localStorage.setItem(CALL_TIP_KEY, '1');
+      } catch (e) { /* sin almacenamiento: se avisa en cada sesión */ }
+      NRB.toast('¿Suena apagado con el micro abierto? No es la app: tu portátil cree que estás en una llamada y filtra la salida. La solución está en ⚙ AUDIO.', 9000);
     }
 
     async toggleMic() {

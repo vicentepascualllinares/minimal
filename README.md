@@ -9,7 +9,7 @@ Es una página web que funciona **sin instalar nada** y **sin conexión**. Nada 
 - **Doble clic en `INICIAR.bat`** (recomendado): abre un servidor local en `http://localhost:5173` y el navegador. Ahí el navegador recuerda el permiso del micrófono.
 - O abre `index.html` directamente (funciona, pero Chrome volverá a pedir el micrófono cada vez).
 
-Usa **Chrome o Edge** y, si puedes, **auriculares**: el micrófono nunca suena por los altavoces, pero si los altavoces suenan cerca el micro los recogerá en las grabaciones.
+Usa **Chrome o Edge** y, si puedes, **auriculares**: el micrófono nunca suena por los altavoces, pero si los altavoces suenan cerca el micro los recogerá en las grabaciones. Si al grabar todo se oye apagado, mira [más abajo](#si-al-grabar-todo-suena-apagado-sin-agudos-con-cancelación-como-un-cable-que-falla): es un ajuste del portátil.
 
 ## Qué hay en pantalla (de arriba abajo)
 
@@ -56,13 +56,22 @@ Botón **⚙** junto al micrófono (panel AUDIO):
 | **BUFFER** | **MÍN** (10 ms) · **ESTABLE** (por defecto) · **MÁX** (~210 ms). Si con altavoces o cable oyes chasquidos o cortes, prueba **MÁX**. Cambiarlo reinicia el audio (se pierden las grabaciones actuales; patrones y mezcla se conservan). |
 | **ECO MIC** | Con **altavoces**, el micro recoge el ritmo que suena. **ON** lo quita de la grabación. Con auriculares déjalo en OFF. |
 
-### Si TODO el ordenador suena raro (sin agudos, "pobre", como un cable que falla) con la app abierta
+### Si al grabar todo suena apagado (sin agudos, con "cancelación", como un cable que falla)
 
-No lo causa el audio de la página (una web no puede cambiar el sonido de otros programas): lo causa **abrir el micrófono**. Algunos equipos, al abrir un micro, pasan la tarjeta de sonido a un modo "llamada" (filtro de agudos y cancelación de eco/ruido) que afecta a todo el sonido. Por eso:
+**No lo causa la página.** Medido en un Acer Aspire (salida Realtek, micro AMD): el servicio de audio de Realtek (`RtkAudUService64.exe`, con la personalización de Acer) lleva una **lista fija de "apps de llamadas"**: `chrome.exe`, `msedge.exe`, `firefox.exe`, `opera.exe`, Teams, Zoom, Skype, Discord, WhatsApp, Slack… Cuando una de ellas **reproduce sonido y a la vez tiene el micro abierto**, la trata como una llamada y activa la **reducción de ruido IA en la salida** (pensada para limpiar la voz de quien te llama). Con música suena apagado y con cancelación, y afecta a todo lo que sale por el Realtek: altavoces y auriculares de cable (el Bluetooth no pasa por ahí).
 
-- La app **ya no abre el micrófono al entrar**: solo al pulsar REC, y lo cierra al terminar. Puedes hacer ritmos y bajos con el sonido normal; compruébalo mirando que el botón de la cabecera diga **MIC OFF**.
-- Si al grabar notas el cambio, prueba en Windows: *Configuración → Sistema → Sonido* → tu micrófono y tu salida → **Mejoras de audio: desactivadas**; *Panel de control → Sonido → Comunicaciones → "No hacer nada"*; y desactiva los perfiles de voz / cancelación de ruido / eco del software de tu tarjeta (Realtek, Dolby, Waves, Nahimic…).
-- En el selector del micrófono de la cabecera elige un dispositivo concreto en vez de "Predeterminado". Si tus auriculares de cable tienen micro (jack de 4 contactos), el conector puede cambiar de modo al abrirlo: usa el micro del portátil u otro.
+Lo que se comprobó midiendo la salida de Windows:
+
+- Abrir el micro desde un programa que no está en la lista no cambia la salida (±0,1 dB). El mismo programa renombrado `chrome.exe`, `msedge.exe`, `opera.exe` o `firefox.exe` la hunde unos 30 dB y le mete ruido; renombrado `brave.exe` o `vivaldi.exe`, no.
+- Chrome abriendo el micro **sin** reproducir nada no afecta. Chrome reproduciendo **y** con el micro abierto: unos segundos de ruido y después los sonidos sostenidos desaparecen, también los de otros programas.
+- No es la atenuación de Windows por comunicaciones ni las "Mejoras de audio" (los altavoces las tienen desactivadas y les pasa igual), y ninguna opción del micro en el navegador lo evita.
+
+Solución:
+
+1. Abre **Acer Purified Voice Console** y apaga **Speaker AI noise reduction (Voice Call)** (según la versión: *Audio output AI noise reduction*). En otras marcas, busca la reducción de ruido del altavoz o "de llamadas" en su app de audio (Realtek Audio Console, Dell/Waves MaxxAudio, Dolby, Nahimic, MyASUS…).
+2. Alternativas sin tocar ese ajuste: graba con una **interfaz de audio USB** (entrada y salida fuera del Realtek) o usa **Brave** o **Vivaldi**, que no están en la lista.
+
+La app, además, mantiene el micro **cerrado salvo al grabar** (se abre al pulsar REC y se cierra unos segundos después de recoger la toma), así que fuera de las tomas el sonido es siempre el normal: compruébalo mirando que el botón de la cabecera diga **MIC OFF**.
 
 Además: la salida lleva un filtro subsónico (24 Hz) y más margen de nivel para no castigar altavoces pequeños, y si enchufas o desenchufas auriculares con la app abierta, el audio se reengancha solo a la salida predeterminada.
 

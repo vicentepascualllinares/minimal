@@ -293,6 +293,8 @@ body.mic-live .mic .grp__l { color: var(--red); }
 .pop .seg { grid-column: 2 / 4; }
 .pop .row__v--l { grid-column: 2 / 4; text-align: left; }
 .pop__note { margin: 14px 0 2px; font-size: 11px; line-height: 1.65; letter-spacing: .03em; color: var(--ink3); }
+.pop__note--warn { padding-left: 10px; border-left: 2px solid var(--amber); color: var(--ink2); }
+.pop__note b { color: var(--ink); font-weight: 500; }
 
 /* ---------------------------------------------------------------------- ayuda */
 #help { position: fixed; inset: 0; z-index: 120; display: none; place-items: center; padding: 24px; background: rgba(2, 2, 3, .82); backdrop-filter: blur(3px); }

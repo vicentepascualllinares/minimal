@@ -297,9 +297,12 @@
     }
 
     /* ---------- micrófono ----------
-       Se abre SOLO cuando hace falta (al grabar) y se cierra al terminar. Tenerlo abierto todo el rato
-       puede hacer que Windows o el driver de la tarjeta pasen a un modo "llamada" (filtro de agudos y
-       cancelación de eco/ruido) que degrada el sonido de TODO el ordenador mientras la app está abierta. */
+       Se abre SOLO cuando hace falta (al grabar) y se cierra al terminar. Motivo (medido en un Acer con
+       Realtek): el servicio de audio del fabricante tiene una lista fija de "apps de llamadas" (chrome.exe,
+       msedge.exe, firefox.exe, opera.exe…). Si una reproduce sonido con el micro abierto, activa una reducción
+       de ruido en la SALIDA (Acer Purified Voice: "Speaker AI noise reduction (Voice Call)") que apaga y
+       "cancela" la música de TODO el equipo. Ninguna opción de getUserMedia lo evita: se desactiva en ese
+       software. Aquí solo se limita el tiempo con el micro abierto. */
     openMic() {
       if (this.mic.ok) return Promise.resolve(true);
       if (!this.micPromise) {
