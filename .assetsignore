@@ -1,9 +1,0 @@
-.git
-.gitignore
-.assetsignore
-wrangler.jsonc
-serve.js
-INICIAR.bat
-PENDIENTE.md
-README.md
-tests
