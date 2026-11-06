@@ -1,5 +1,5 @@
 /* ============================================================================
- *  NIGHT RIDE THROUGHT BUDAPEST · mezclador
+ *  MIXER OF ALEXANDRIA: MINIMAL · mezclador
  *  Por canal solo lo imprescindible: HP, LP, PAN y volumen (+ mute / solo).
  * ========================================================================== */
 (function () {

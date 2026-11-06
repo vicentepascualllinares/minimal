@@ -1,5 +1,5 @@
 /* ============================================================================
- *  NIGHT RIDE THROUGHT BUDAPEST · DSP
+ *  MIXER OF ALEXANDRIA: MINIMAL · DSP
  *  ----------------------------------------------------------------------------
  *  JS puro: sin DOM y sin Web Audio. Se carga como script normal en el hilo
  *  principal, se serializa (toString) dentro de un Worker creado con Blob, y se

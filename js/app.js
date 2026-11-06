@@ -1,5 +1,5 @@
 /* ============================================================================
- *  NIGHT RIDE THROUGHT BUDAPEST · aplicación
+ *  MIXER OF ALEXANDRIA: MINIMAL · aplicación
  *  Cabecera, arranque (la "puerta"), bucle de animación y atajos.
  * ========================================================================== */
 (function () {
@@ -42,7 +42,7 @@
       // brand
       top.append(el('div', { class: 'brand', title: NRB.APP_NAME }, [
         el('i', { class: 'brand__dot' }),
-        el('div', { class: 'brand__txt' }, [el('b', { text: 'NIGHT RIDE' }), el('span', { text: 'THROUGHT BUDAPEST' })]),
+        el('div', { class: 'brand__txt' }, [el('b', { text: 'MIXER OF ALEXANDRIA' }), el('span', { text: 'MINIMAL' })]),
       ]));
 
       // transporte

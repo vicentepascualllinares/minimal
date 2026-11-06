@@ -1,5 +1,5 @@
 /* ============================================================================
- *  NIGHT RIDE THROUGHT BUDAPEST · pistas
+ *  MIXER OF ALEXANDRIA: MINIMAL · pistas
  *  DrumLane (secuenciador de pasos), BassLane (piano roll) y RecLane (looper).
  * ========================================================================== */
 (function () {

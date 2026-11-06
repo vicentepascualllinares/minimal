@@ -1,5 +1,5 @@
 /* ============================================================================
- *  NIGHT RIDE THROUGHT BUDAPEST · sintes
+ *  MIXER OF ALEXANDRIA: MINIMAL · sintes
  *  Kit estilo 909 (kick, clap, snare, hat, open hat) y bajo monofónico.
  *  Cada voz recibe: env (contexto + buffers), out (nodo destino), t (tiempo),
  *  vel (0..1) y v = { pitch, decay } (variación para el humanize).

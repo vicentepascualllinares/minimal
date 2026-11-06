@@ -1,4 +1,4 @@
-# Night Ride Throught Budapest
+# MIXER OF ALEXANDRIA: MINIMAL
 
 Looper + caja de ritmos para hacer música **minimal / rominian / Budapest night techno**, pensado para trabajar de noche, en privado y sin tocar parámetros: grabas, el ambiente se genera solo y tú te dedicas a componer.
 

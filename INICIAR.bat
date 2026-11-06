@@ -1,9 +1,9 @@
 @echo off
-rem Night Ride Throught Budapest - lanzador
+rem Mixer of Alexandria: Minimal - lanzador
 rem Abre la aplicacion en un servidor local (el navegador recuerda mejor el permiso del microfono).
 setlocal
 cd /d "%~dp0"
-title Night Ride Throught Budapest
+title Mixer of Alexandria: Minimal
 
 where node >nul 2>nul
 if %errorlevel%==0 (

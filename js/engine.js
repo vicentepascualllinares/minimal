@@ -1,5 +1,5 @@
 /* ============================================================================
- *  NIGHT RIDE THROUGHT BUDAPEST · motor de audio
+ *  MIXER OF ALEXANDRIA: MINIMAL · motor de audio
  *
  *  Grafo:
  *    voces / loops -> bus -> [HP 24 dB] -> [LP 24 dB] -> volumen -> pan -> mute -> master

@@ -1,4 +1,4 @@
-/* Servidor local mínimo (sin dependencias) para Night Ride Throught Budapest.
+/* Servidor local mínimo (sin dependencias) para Mixer of Alexandria: Minimal.
    Uso:  node serve.js [--open]      (puerto por defecto 5173, o PORT=xxxx)
    Se sirve en localhost para que el navegador recuerde el permiso del micrófono. */
 const http = require('http');
@@ -41,6 +41,6 @@ server.on('error', (err) => {
 });
 
 server.listen(port, '127.0.0.1', () => {
-  console.log('\n  NIGHT RIDE THROUGHT BUDAPEST  ->  ' + url + '\n  (cierra esta ventana o pulsa Ctrl+C para parar)\n');
+  console.log('\n  MIXER OF ALEXANDRIA: MINIMAL  ->  ' + url + '\n  (cierra esta ventana o pulsa Ctrl+C para parar)\n');
   if (wantOpen) exec('start "" ' + url);
 });

@@ -1,12 +1,12 @@
 /* ============================================================================
- *  NIGHT RIDE THROUGHT BUDAPEST · núcleo
+ *  MIXER OF ALEXANDRIA: MINIMAL · núcleo
  *  Nombres, estado del proyecto, mapeos de controles, grooves y persistencia.
  * ========================================================================== */
 (function () {
   'use strict';
   const NRB = (window.NRB = window.NRB || {});
 
-  NRB.APP_NAME = 'Night Ride Throught Budapest';
+  NRB.APP_NAME = 'Mixer of Alexandria: Minimal';
 
   /* mini emisor de eventos */
   NRB.emitter = function (obj) {

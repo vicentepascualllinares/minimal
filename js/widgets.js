@@ -1,5 +1,5 @@
 /* ============================================================================
- *  NIGHT RIDE THROUGHT BUDAPEST · widgets
+ *  MIXER OF ALEXANDRIA: MINIMAL · widgets
  *  Knob, fader, selector segmentado, slider y popover. Todo propio, sin librerías.
  * ========================================================================== */
 (function () {

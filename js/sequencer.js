@@ -1,5 +1,5 @@
 /* ============================================================================
- *  NIGHT RIDE THROUGHT BUDAPEST · transporte y looper
+ *  MIXER OF ALEXANDRIA: MINIMAL · transporte y looper
  *
  *  Transport: reloj maestro con "lookahead" (programa el audio unos ms antes con
  *             el reloj de Web Audio, no con timers). Aplica swing / humanize /

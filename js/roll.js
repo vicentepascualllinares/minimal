@@ -1,5 +1,5 @@
 /* ============================================================================
- *  NIGHT RIDE THROUGHT BUDAPEST · piano roll del bajo
+ *  MIXER OF ALEXANDRIA: MINIMAL · piano roll del bajo
  *
  *  - clic en vacío: crea una nota (arrastra a la derecha para alargarla)
  *  - arrastrar una nota: mueve (tiempo y altura) · arrastrar su borde derecho: longitud
