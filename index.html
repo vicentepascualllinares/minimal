@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050506">
+<title>Night Ride Throught Budapest</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050506'/%3E%3Crect x='7' y='7' width='18' height='18' fill='none' stroke='%23ffa23a' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="grain" aria-hidden="true"></div>
+
+<!-- la puerta: da acceso al audio (el navegador exige un gesto) y al micrófono -->
+<section id="gate">
+  <div class="gate__inner">
+    <p class="gate__kicker">SESIÓN PRIVADA</p>
+    <h1 class="gate__title"><span>Night Ride</span><span>Throught</span><span>Budapest</span></h1>
+    <div class="gate__road" aria-hidden="true"></div>
+    <p class="gate__note">Un looper y una caja de ritmos para música minimal nocturna.<br>
+      El micrófono <b>solo se abre cuando grabas</b> y nunca suena por los altavoces.</p>
+    <button id="enter" class="gate__btn" type="button">ENTRAR</button>
+    <p id="gate-status" class="gate__status" role="status"></p>
+  </div>
+</section>
+
+<div id="glow" aria-hidden="true"></div>
+
+<div id="app" hidden>
+  <header id="top"></header>
+  <div id="road" aria-hidden="true"></div>
+  <main id="lanes"></main>
+  <footer id="mixer"></footer>
+</div>
+
+<!-- guía rápida -->
+<div id="help">
+  <div class="help__card">
+    <button class="help__x" type="button" aria-label="Cerrar">×</button>
+    <h2>Guía rápida</h2>
+    <dl>
+      <dt>Batería</dt>
+      <dd>Clic en un paso: activar / desactivar (arrastra para pintar). <b>Clic derecho</b>: acento → normal → fantasma. Clic en el nombre: escucharlo.</dd>
+      <dt>≈ Feel</dt>
+      <dd>Por pista: <b>swing</b>, <b>humanize</b> y <b>groove</b> (plantillas de micro-tiempo y dinámica). En la batería también la duración del patrón (1, 2 o 4 compases).</dd>
+      <dt>Bajo</dt>
+      <dd><b>Piano roll</b> abre el editor. Clic crea una nota (arrastra para alargarla), arrastra una nota para moverla, clic derecho la borra. Cuantización 1/4 … 1/32, tresillos o <b>LIBRE</b>. Mayús + rueda sobre una nota: velocidad.</dd>
+      <dt>REC</dt>
+      <dd>Pulsa <b>REC</b> (o 1–4): se abre el micrófono, se arma y empieza en el próximo compás. Púlsalo otra vez: termina en el siguiente compás. Con <b>LOOP</b> fijo se cierra solo. <b>El micrófono se cierra unos segundos después de grabar</b>: abierto, algunos equipos degradan el sonido de todo el ordenador. El botón <b>MIC</b> lo abre o lo cierra a mano.</dd>
+      <dt>Ambient</dt>
+      <dd>Al terminar se genera un ambiente con glitch, granulado, filtro, delay y reverb <b>aleatorios que ya no cambian</b> para esa grabación. <b>FX ×</b> alarga o acorta el ciclo de esos efectos (½, 1, 2 o 4 veces el loop). Para otro ambiente, vuelve a grabar.</dd>
+      <dt>Vocal</dt>
+      <dd>Gate, afinación a la tonalidad (<b>KEY</b>), compresión, EQ y una sala corta.</dd>
+      <dt>Mezcla</dt>
+      <dd>Por canal: <b>HP</b> / <b>LP</b> (filtros), <b>PAN</b> y fader. M = mute, S = solo. Doble clic restaura un control.</dd>
+      <dt>Atajos</dt>
+      <dd><kbd>Espacio</kbd> play / stop · <kbd>1</kbd>–<kbd>4</kbd> REC 1–4 · <kbd>Esc</kbd> cerrar.</dd>
+    </dl>
+    <p class="help__foot">Las grabaciones viven solo en la memoria de esta pestaña: no se guardan ni se envían a ningún sitio. Se recuerdan patrones y mezcla.</p>
+  </div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/dsp.js"></script>
+<script src="js/core.js"></script>
+<script src="js/synth.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/sequencer.js"></script>
+<script src="js/widgets.js"></script>
+<script src="js/roll.js"></script>
+<script src="js/lanes.js"></script>
+<script src="js/mixer.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
